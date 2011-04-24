@@ -1,0 +1,4 @@
+self: play -> jpagen 1.0
+
+require:
+    - play

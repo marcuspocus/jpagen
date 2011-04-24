@@ -1,0 +1,44 @@
+package ${table.packageName};
+
+import javax.persistence.*;
+import java.sql.*;
+import java.sql.Blob;
+import javax.sql.*;
+import java.math.*;
+import java.util.*;
+import java.util.Date;
+
+import play.db.jpa.*;
+
+@Entity
+@Table(name="${table.tableName}")
+#{if table.idClass}
+@IdClass(${table.idClass})
+#{/if}
+public class ${table.className} extends ${table.extend}{
+
+#{if table.extend == "GenericModel"}
+#{if table.isIdLess}
+	@Id
+	@GeneratedValue
+	public Long realId;
+
+	@Override
+	public Object _key(){
+		return realId;
+	}
+#{/if}
+#{/if}
+
+#{list items:table.columns, as:'item' }
+#{if item.primary }
+	@Id
+#{/if}
+	@Column(name="${item.columnName}"#{ifnot item.nullable}#{ifnot item.primary}, nullable=false#{/ifnot}#{/ifnot}#{if item.max}, length=${item.max}#{/})
+#{if item.columnType == "Blob"}
+	@Lob
+#{/}
+	public ${item.columnType} ${item.columnPropertyName};
+
+#{/list}
+}

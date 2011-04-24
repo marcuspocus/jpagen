@@ -1,0 +1,50 @@
+package ${idClass.packageName};
+
+import java.io.Serializable;
+import java.sql.*;
+import javax.sql.*;
+import java.math.*;
+import java.util.*;
+import java.util.Date;
+
+public class ${idClass.className} implements Serializable{
+
+#{list items:idClass.keys, as:'key'}
+	public ${key.columnType} ${key.columnPropertyName};
+
+#{/list}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+#{list items:idClass.keys, as:'key'}
+		result = prime * result + ((${key.columnPropertyName} == null) ? 0 : ${key.columnPropertyName}.hashCode());
+#{/list}
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof ${idClass.className})) {
+			return false;
+		}
+		${idClass.className} other = (${idClass.className}) obj;
+#{list items:idClass.keys, as:'key'}
+		if (${key.columnPropertyName} == null) {
+			if (other.${key.columnPropertyName} != null) {
+				return false;
+			}
+		} else if (!${key.columnPropertyName}.equals(other.${key.columnPropertyName})) {
+			return false;
+		}
+#{/list}		
+		return true;
+	}
+
+}
