@@ -1,3 +1,7 @@
 dist
 commands.pyc
-lib/play-jpagen*.*
+lib
+.settings
+.project
+.classpath
+eclipse
