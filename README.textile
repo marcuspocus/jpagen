@@ -25,16 +25,20 @@ This command will create the classes in the models package based on the database
 
 h2. List of properties you can override in **conf/application.conf**
 
-* @db.driver@
-* @db.url@
-* @db.user@
-* @db.pass@
-* @db.default.schema@
+
+* @db.driver@ (required)
+* @db.url@ (required)
+* @db.user@ (required)
+* @db.pass@ (required)
+* @db.default.schema@ (optional, default="")
 * @jpagen.package.name@ (default=models)
-* @jpagen.template.entity@ (default=db/entity.tmpl)
-* @jpagen.template.idClass@ (default=db/idClass.tmpl)
-* @jpagen.template.list@ (default=db/list.tmpl)
+* @jpagen.template.entity@ (default=jpagen/entity.tmpl)
+* @jpagen.template.idClass@ (default=jpagen/idClass.tmpl)
+* @jpagen.template.list@ (default=jpagen/list.tmpl)
+* @jpagen.mode@ (required, possible values=MYSQL,ORACLE)
+* @jpagen.excludes@ (optional, regular expression)
+* @jpagen.includes@ (optional, regular expression)
 
 p. Be sure to configure correctly your database access using your **conf/application.conf** file (@db.user@, @db.pass@, @db.driver@, @db.url@, etc...).
 
-fn1. Made by "@flexitpro":http://twitter.com/flexitpro (Visit "flexitpro.com":http://www.flexitpro.com)
+h6. Made by "@flexitpro":http://twitter.com/flexitpro (Visit "flexitpro.com":http://www.flexitpro.com)
