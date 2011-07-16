@@ -1,8 +1,15 @@
 dist
 commands.pyc
 lib
+<<<<<<< HEAD
 tmp
 eclipse
 .project
 .classpath
 .settings
+=======
+.settings
+.project
+.classpath
+eclipse
+>>>>>>> v1.0
