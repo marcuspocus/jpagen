@@ -7,11 +7,11 @@ h2. <a>Enable the JPAGEN module for the application</a>
 In the **conf/application.conf** file, enable the JPAGEN module by adding this line:
 
 bc. # The jpagen module
-module.jpagen=${play.path}/modules/jpagen
+module.jpagen=${play.path}/modules/jpagen-[version]
 
 or in the **conf/dependencies.yaml** file:
 require:
-	play -> jpagen 1.0
+	play -> jpagen [version]
 
 h2. <a>Creating the conf/table_list.conf file from the database</a>
 
