@@ -135,7 +135,7 @@ public class Generator {
 				Table table = new Table();
 				table.tableName = tableName;
 				table.packageName = packageName;
-				table.className = JavaExtensions.camelCase(table.tableName.replaceAll("_", " "));
+				table.className = JavaExtensions.camelCase(table.tableName.toLowerCase().replaceAll("_", " "));
 
 				List<String> keys = new ArrayList<String>();
 				ResultSet rsKeys = meta.getPrimaryKeys(null, (schema.length() == 0 ? null : schema), tableName);
