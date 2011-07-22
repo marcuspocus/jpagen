@@ -1,4 +1,4 @@
-self: play -> jpagen 1.0
+self: play -> jpagen 1.0.1
 
 require:
     - play

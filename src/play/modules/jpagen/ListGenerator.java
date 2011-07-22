@@ -43,9 +43,11 @@ public class ListGenerator {
 			Logger.info("Include pattern: %s", Arrays.asList(includePattern));
 			String temp = Play.configuration.getProperty("db.default.schema", "");
 			String[] schemas = null;
-			if (temp.length() > 0) {
+			
+			// Change by cbueno
+			//if (temp.length() > 0) {
 				schemas = temp.split(",");
-			}
+			//}
 			String templateListPath = Play.configuration.getProperty("jpagen.template.list", "jpagen/list.tmpl");
 
 			Logger.info("driver: %s url: %s user: %s password: %s", driver, url, user, password);
@@ -66,7 +68,14 @@ public class ListGenerator {
 				while (rs.next()) {
 					boolean bExclude = false;
 					boolean bInclude = true;
-					String table = schema + "." + rs.getString("TABLE_NAME").trim();
+					
+					// Change by cbueno
+					String table = null;
+					if(schema.length() > 0){
+						table = schema + "." + rs.getString("TABLE_NAME").trim();
+					}else{
+						table = rs.getString("TABLE_NAME").trim();
+					}
 					
 					if (excludePattern != null && excludePattern.length > 0) {
 						for (String exclude : excludePattern) {
